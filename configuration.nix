@@ -27,6 +27,7 @@
        "https://cache.nixos.org/"
        "https://linux-surface.cachix.org"
        "https://hyprland.cachix.org"
+       "https://nix-community.cachix.org"
      ];
 
      trusted-public-keys = [
@@ -36,6 +37,7 @@
        # (if you prefer, you can use `cachix use linux-surface` instead of adding keys manually)
        "linux-surface.cachix.org-1:pne97K2ML9alAtzzVvmoS4G8HWIeyvP4nNfS79vS7Sg="
        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+       "nix-community.cachix.org-1:mB9FSh9qf2d..."
      ];
    };
 
@@ -98,6 +100,7 @@
     btop
     git
     foot
+    quickshell
     # Utilities 
     wl-clipboard
     libinput

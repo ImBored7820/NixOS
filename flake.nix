@@ -13,7 +13,9 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Surface hardware helpers
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    #nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:8bitbuddhist/nixos-hardware?ref=surface-rust-target-spec-fix";
+
 
     # Hyprland upstream 
     hyprland.url = "github:hyprwm/Hyprland";
@@ -37,7 +39,7 @@
   in
   {
     # NixOS system entry. Name it the same as your machine/user convention.
-    nixosConfigurations.MusaNixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.MusaNixos = nixpkgs-unstable.lib.nixosSystem {
       inherit system;
 
       specialArgs = {
