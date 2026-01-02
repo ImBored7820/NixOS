@@ -15,7 +15,29 @@
     };
   };
 
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    settings = {
+      # Shell and Cursor
+      shell_integration = "no-rc";
+      cursor_shape = "beam";
+
+      # Tab Bar Configuration
+      tab_bar_edge = "top";
+      tab_bar_style = "powerline";
+      tab_bar_min_tabs = 1;
+      tab_powerline_style = "round";
+      tab_title_template = "{layout_name[:2].upper()}";
+
+      # Miscellaneous
+      editor = "neovim";
+    };
+
+    keybindings = {
+      "ctrl+t" = "new_tab";
+      "ctrl+w" = "close_tab"; 
+    };  
+  };
 
   # Packages
   home.packages = with pkgs; [

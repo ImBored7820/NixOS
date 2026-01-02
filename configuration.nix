@@ -127,6 +127,20 @@
 
   networking.hostName = "MusaNixos"; # Define your hostname.
   services.openssh.enable = true;
+  security.apparmor.enable = true;
+  services.fail2ban = {
+    enable = true;
+    maxretry = 3;
+    bantime = "1h";
+    jails = {
+      sshd.settings = {
+        enable = true;
+	maxretry = 3;
+	bantime = "1h";
+      };
+    };
+  };
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -134,6 +148,8 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+  networking.nftables.enable = true;
+
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
