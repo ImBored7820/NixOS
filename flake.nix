@@ -33,14 +33,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Surface hardware helpers
-    #nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    #nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-hardware.url = "github:8bitbuddhist/nixos-hardware?ref=surface-rust-target-spec-fix";
 
     # Hyprland upstream 
     hyprland.url = "github:hyprwm/Hyprland";
 
     # Home Manager
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
   };
