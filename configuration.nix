@@ -5,7 +5,7 @@
     [ 
       ./hardware-configuration.nix
     ];
-
+  
   # --- BOOT & KERNEL ---
   boot.loader.systemd-boot.enable = true;
   boot.initrd.systemd.enable = true;
@@ -21,7 +21,8 @@
   "splash"
   ];
 
-  # --- Laptop Protection ---
+  # --- Laptop ---
+  hardware.microsoft-surface.kernelVersion = “stable”; # 6.15.9
   services.thermald.enable = true;
 
   # --- GRAPHICS ---
