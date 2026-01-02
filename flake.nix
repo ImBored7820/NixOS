@@ -16,7 +16,7 @@
           "https://hyprland.cachix.org"
           "https://nix-community.cachix.org"
         ];
-
+		# TODO: VERIFY KEYS
         extra-trusted-public-keys = [
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
 	  "linux-surface.cachix.org-1:h4xRj4dujnm9I9aL2V7OmUTiT7oEefGVwiI4UQrESsk="
@@ -33,14 +33,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Surface hardware helpers
-    #nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    #nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-hardware.url = "github:8bitbuddhist/nixos-hardware?ref=surface-rust-target-spec-fix";
 
     # Hyprland upstream 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    # Home Manager
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
   };
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, hyprland, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, hyprland, home-manager, ... }:
   let
     # Target architecture 
     system = "x86_64-linux";
@@ -77,6 +81,12 @@
 
         # Surface hardware module
         nixos-hardware.nixosModules.microsoft-surface-common
+
+	# Home Manager
+	home-manager.nixosModules.home-manager
+	{
+	  home-manager.users.musa = import ./home.nix;
+	}
       ];
 
     };
