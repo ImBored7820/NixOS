@@ -8,9 +8,12 @@
   
   # --- BOOT & KERNEL ---
   boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 0;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.initrd.systemd.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "i915" ]; # Keep this for Intel Graphics
+  boot.consoleLogLevel = 0;
   # Plymouth
   boot.plymouth.enable = true;
   boot.plymouth.theme = "bgrt";
