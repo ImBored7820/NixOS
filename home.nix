@@ -1,5 +1,4 @@
-{config,lib, pkgs, inputs, stable, hyprland, spicetify-nix, ... }:
-
+{config, lib, pkgs, inputs, hyprland, spicetify-nix, ... }:
 
   let
     spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
