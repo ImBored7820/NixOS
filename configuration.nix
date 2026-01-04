@@ -7,24 +7,34 @@
     ];
   
   # --- BOOT & KERNEL ---
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.timeout = 0;
-  boot.loader.systemd-boot.consoleMode = "max";
-  boot.initrd.systemd.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = [ "i915" ]; # Keep this for Intel Graphics
-  boot.consoleLogLevel = 0;
-  # Plymouth
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "bgrt";
-  boot.kernelParams = [ 
-  "i915.enable_guc=3" 
-  "i915.enable_fbc=1"
-  "quiet"
-  "splash"
-  "loglevel=3"
-  "udev.log_level=3"
-  ];
+
+  boot = {
+    consoleLogLevel = 0;
+    loader = {
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+	  };
+      efi.canTouchEfiVariables = true;
+      timeout = 3;
+	};
+    initrd = {
+      systemd.enable = true;
+      kernelModules = [ "i915" ];
+	};
+    plymouth = {
+      enable = true;
+      theme = "spinner";
+	};
+    kernelParams = [
+      "i915.enable_guc=3" 
+      "i915.enable_fbc=1"
+      "quiet"
+      "splash"
+      "loglevel=3"
+      "udev.log_level=3"
+	];
+  };
 
   # --- Laptop ---
   hardware.microsoft-surface.kernelVersion = "stable"; # 6.15.9
@@ -92,34 +102,6 @@
     extraGroups = [ "wheel" "networkmanager" "video" "input" ];
     shell = pkgs.bash;
   };
-
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk25;
-  };
-
-   # --- PACKAGES (System) --- 
-   environment.systemPackages = with pkgs; [
-    # Functionality 
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    kitty
-    fastfetch
-    btop
-    # Utilities 
-    wl-clipboard
-    libinput
-    hyprpolkitagent
-    # Linux-Surface
-    surface-control
-    linux-firmware
-    #Ctls
-    brightnessctl
-    playerctl
-    sbctl
-    # Misc
-    cachix
-    ];
 
   # --- FONTS ---
   fonts.packages = with pkgs; [
