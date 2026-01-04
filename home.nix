@@ -44,7 +44,7 @@
       hyprpolkitagent
       hyprland-protocols
       hyprland-qtutils
-      kdePackages.breeze-icons
+      hyprshot
     ];
 
     # Settings
@@ -73,7 +73,7 @@
     home.sessionVariables = {
       _JAVA_AWT_WM_NONREPARENTING = "1";
       "-Dwayland.enabled" = "true";
-      GDK_SCALE = "1.5";
+      GDK_SCALE = "2";
       "_JAVA_OPTIONS" = "-Dsun.java2d.uiScale=1.5";
     };
 }

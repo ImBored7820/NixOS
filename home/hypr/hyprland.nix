@@ -33,7 +33,7 @@
 ################
 
 # See https://wiki.hypr.land/Configuring/Monitors/
-monitor=,preferred,auto,auto
+monitor=,2256x1504,0x0,1.6
 
 
 ###################
@@ -67,11 +67,7 @@ exec-once = waybar & hyprpaper & nwg-dock-hyprland -d -i 24 -p bottom -a center 
 # See https://wiki.hypr.land/Configuring/Environment-variables/
 
 env = XCURSOR_SIZE,24
-env = XCURSOR_THEME,breeze_cursors
-env = HYPRCURSOR_THEME,breeze_cursors
 env = HYPRCURSOR_SIZE,24
-env = XDG_DATA_DIRS,$HOME/.local/share:$XDG_DATA_DIRS
-exec-once = hyprctl setcursor breeze_cursors 24
 xwayland {
   force_zero_scaling = true
 }
@@ -268,6 +264,7 @@ bind = $mainMod, V, togglefloating,
 bind = $mainMod, D, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod SHIFT, S, exec, hyprshot -zm region --output-folder /home/musa/Pictures/Screenshots
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l
@@ -300,8 +297,8 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 # Example special workspace (scratchpad)
-bind = $mainMod, S, togglespecialworkspace, magic
-bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+bind = $mainMod, T, togglespecialworkspace, magic
+bind = $mainMod SHIFT, T, movetoworkspace, special:magic
 
 # Scroll through existing workspaces with mainMod + scroll
 bind = $mainMod, mouse_down, workspace, e+1
