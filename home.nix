@@ -18,9 +18,8 @@
     home.stateVersion = "25.11";
 
     #home.file.".config/nwg-dock-hyprland/style.css".source = ./home/nwg/style.css;
-
     #home.file.".config/nwg-drawer/style.css".source = ./home/nwg/drawer.css;
-
+  
     # Packages
     home.packages = with pkgs; [
       # Main
@@ -29,8 +28,7 @@
       brave
       nautilus
       jetbrains.idea
-      pkgs.jdk25
-      waybar
+      jdk25
       nwg-dock-hyprland
       nwg-drawer
       dunst
@@ -44,7 +42,23 @@
       hyprpolkitagent
       hyprland-protocols
       hyprland-qtutils
-      kdePackages.breeze-icons
+      neovim 
+      wget
+      kitty
+      fastfetch
+      btop
+      wl-clipboard
+      libinput
+      hyprpolkitagent
+      # Linux-Surface
+      surface-control
+      linux-firmware
+      #Ctls
+      brightnessctl
+      playerctl
+      sbctl
+      # Misc
+      cachix
     ];
 
     # Settings
