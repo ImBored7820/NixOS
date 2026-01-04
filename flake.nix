@@ -15,6 +15,8 @@
       "https://nix-community.cachix.org"
       "https://linux-surface.cachix.org"
       "https://hyprland.cachix.org"
+
+      "https://everything-nix.cachix.org"
     ];
 
     extra-trusted-public-keys = [
@@ -22,6 +24,8 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" # Confirmed, nix site
       "linux-surface.cachix.org-1:h4xRj4dujnm9I9aL2V7OmUTiT7oEefGVwiI4UQrESsk=" # Confirmed, self maintained
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" # Confirmed, hyprland site
+
+      "everything-nix.cachix.org-1:RvwOWe+ftfuxJ+2a5yBkMZk1d2TtNDloE/desTPTjmI="
     ];
   };
 
