@@ -215,7 +215,7 @@ master {
 
 # https://wiki.hypr.land/Configuring/Variables/#misc
 misc {
-    force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
+    force_default_wallpaper = 1 # Set to 0 or 1 to disable the anime mascot wallpapers
     disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
 }
 
@@ -263,9 +263,9 @@ $mainMod = SUPER # Sets "Windows" key as main modifier
 bind = $mainMod, RETURN, exec, $terminal
 bind = $mainMod, Q, killactive,
 bind = $mainMod, X, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit
-bind = $mainMod, E, exec, pkill wofi || wofi --show drun
+bind = $mainMod, D, exec, pkill wofi || wofi --show drun
 bind = $mainMod, V, togglefloating,
-bind = $mainMod, D, exec, $menu
+bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
 
@@ -300,8 +300,11 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 # Example special workspace (scratchpad)
-bind = $mainMod, S, togglespecialworkspace, magic
-bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+bind = $mainMod, T, togglespecialworkspace, magic
+bind = $mainMod SHIFT, T, movetoworkspace, special:magic
+
+# Screenshot
+bind = $mainMod SHIFT, S, exec, hyprshot -m region -z -o /home/musa/Pictures/Screenshots 
 
 # Scroll through existing workspaces with mainMod + scroll
 bind = $mainMod, mouse_down, workspace, e+1

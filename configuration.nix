@@ -16,7 +16,7 @@
         consoleMode = "max";
 	};
       efi.canTouchEfiVariables = true;
-      timeout = 3;
+      timeout = 0;
     };
     initrd = {
       systemd.enable = true;
@@ -45,7 +45,7 @@
     enable = true;
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "balanced";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
     };
   };
   zramSwap = {
@@ -57,7 +57,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16 * 1024;
+      size = 4 * 1024;
       priority = 30;
 	}
   ];
@@ -126,6 +126,7 @@
   hardware.enableAllFirmware = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  services.flatpak.enable = true;
 
   networking.hostName = "MusaNixos"; # Define your hostname.
   services.openssh.enable = true;

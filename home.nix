@@ -1,4 +1,4 @@
-{config, lib, pkgs, inputs, hyprland, spicetify-nix, ... }:
+{config, lib, pkgs, inputs, hyprland, nix-flatpak, spicetify-nix, ... }:
 
   let
     spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
@@ -11,6 +11,7 @@
       ./home/hypr/hyprland.nix
       ./home/wofi/wofi.nix
       spicetify-nix.homeManagerModules.default
+      nix-flatpak.homeManagerModules.nix-flatpak
     ];
     
     home.username = "musa";
@@ -24,8 +25,7 @@
     home.packages = with pkgs; [
       # Main
       discord
-      #spotify
-      brave
+      prismlauncher
       nautilus
       jetbrains.idea
       jdk25
@@ -38,6 +38,7 @@
       hypridle
       hyprpicker
       hyprsunset
+      hyprshot
       hyprsysteminfo
       hyprpolkitagent
       hyprland-protocols
@@ -62,7 +63,11 @@
     ];
 
     # Settings
-   
+    services.flatpak = {
+      enable = true;
+      packages = ["app.zen_browser.zen"];
+    };
+    
     programs.git = {
       enable = true;
       settings = {

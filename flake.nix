@@ -38,13 +38,16 @@
     #nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # Window manager
-    hyprland.url = "github:hyprwm/Hyprland/v0.53.0";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Flatpak - Zen
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     # Spotify customization
     spicetify-nix = {
@@ -53,7 +56,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, hyprland, home-manager, spicetify-nix, ... }:
+  outputs = { self, nixpkgs, nixos-hardware, hyprland, home-manager, nix-flatpak, spicetify-nix, ... }:
   let
     system = "x86_64-linux";
 
@@ -77,6 +80,7 @@
 
         # Main configuration
         ./configuration.nix
+	nix-flatpak.nixosModules.nix-flatpak
 
         # Hardware support
         nixos-hardware.nixosModules.microsoft-surface-common
@@ -85,7 +89,10 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            extraSpecialArgs = { inherit spicetify-nix; };
+            useGlobalPkgs = true;
+	    useUserPackages = true;
+
+            extraSpecialArgs = { inherit spicetify-nix; inherit nix-flatpak; };
             users.musa = import ./home.nix;
           };
         }
