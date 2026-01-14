@@ -24,6 +24,7 @@
     # Packages
     home.packages = with pkgs; [
       # Main
+      adwaita-icon-theme
       discord
       prismlauncher
       nautilus
@@ -60,7 +61,22 @@
       sbctl
       # Misc
       cachix
+      zoom-us
     ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true; # Uncomment if you use X11 instead of Wayland
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 32; # Larger size helps with 150% scaling
+  };
+
+  dconf.settings = {
+  "org/gnome/mutter" = {
+    experimental-features = [ "scale-monitor-framebuffer" "xwayland-native-scaling" ];
+  };
+};
 
     # Settings
     services.flatpak = {

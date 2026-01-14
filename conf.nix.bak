@@ -78,10 +78,7 @@
   # --- HYPRLAND ---
   xdg.portal = {
     enable = true;
-    extraPortals = [ 
-      pkgs.xdg-desktop-portal-gtk 
-      pkgs.xdg-desktop-portal-gnome
-      ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   programs.hyprland = {
    enable = true;
@@ -89,18 +86,15 @@
    portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
    };
   security.polkit.enable = true;
-
-  # --- Gnome ---
-  services = {
-    dbus.enable = true;
-    xserver = { # XWayland
-      enable = true;
-      desktopManager.gnome.enable = true; # Gnome
-      #plasma6.enable = true; # KDE
-    };
-    displayManager.gdm = {
-      enable = true;
-    };
+  services.dbus.enable = true;
+  
+  # --- SDDM ---
+  services.xserver.enable = true;
+  #services.desktopManager.plasma6.enable = true; # KDE
+  services.xserver.desktopManager.gnome.enable = true; # Gnome
+  services.displayManager.gdm = {
+    enable = true;
+    #wayland.enable = true;
   };
 
   # --- ENVIRONMENT ---
@@ -109,7 +103,7 @@
    NIX_PROXIES_FOR_OPENGL = "1";
   };
 
-  # --- HOME-MANAGER ---
+    # --- HOME-MANAGER ---
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
@@ -209,4 +203,3 @@ text = ''
 
 
 }
-
